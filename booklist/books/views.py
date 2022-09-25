@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Book
+from django.urls import reverse_lazy
 
 
 from django.views.generic import (
@@ -30,3 +31,14 @@ class BookUpdateView(UpdateView):
     model = Book
     fields = ('title', 'user', 'status',)
     template_name = "books/book_update.html"
+
+class BookDeleteView(DeleteView):
+    model = Book
+    template_name = "books/book_delete.html"
+    success_url = reverse_lazy('book_list')
+
+class BookCreateView(CreateView):
+    model = Book
+    fields = ('title', 'user', 'status',)
+    template_name = "books/book_create.html"
+    success_url = reverse_lazy('book_list')
