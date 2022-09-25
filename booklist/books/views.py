@@ -25,3 +25,8 @@ class BookDetailView(DetailView):
     model = Book
     template_name = "books/book_detail.html"
     context_object_name = "book"
+
+class BookUpdateView(UpdateView):
+    model = Book
+    fields = ('title', 'user', 'status',)
+    template_name = "books/book_update.html"
